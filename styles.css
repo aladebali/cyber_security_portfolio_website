@@ -1,0 +1,139 @@
+/* ===========================
+   ROOT COLORS & VARIABLES
+=========================== */
+:root {
+  --primary-color: #0b5fff;   /* أزرق أساسي */
+  --secondary-color: #1e1e2f; /* داكن */
+  --accent-color: #ff6b6b;    /* أحمر فاتح للروابط أو التفاعل */
+  --bg-color: #f4f6fb;        /* خلفية الموقع */
+  --card-color: #ffffff;      /* خلفية البطاقات */
+  --text-color: #222222;      /* نص عادي */
+  --muted-color: #555555;     /* نص ثانوي */
+  --border-radius: 12px;
+  --shadow-color: rgba(0,0,0,0.08);
+  --transition-speed: 0.3s;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===========================
+   GLOBAL STYLES
+=========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+.container {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+.hero {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #0b5fff, #4f9cff);
+  border-radius: var(--border-radius);
+  color: #fff;
+  box-shadow: 0 8px 20px var(--shadow-color);
+  margin-bottom: 30px;
+}
+
+.hero .avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  margin-bottom: 20px;
+  transition: transform var(--transition-speed);
+}
+
+.hero .avatar:hover {
+  transform: scale(1.05);
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.hero .tagline {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #e0e0f0;
+}
+
+/* ===========================
+   CARD SECTIONS
+=========================== */
+.card {
+  background-color: var(--card-color);
+  padding: 25px;
+  margin: 20px 0;
+  border-radius: var(--border-radius);
+  box-shadow: 0 6px 18px var(--shadow-color);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px var(--shadow-color);
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  border-bottom: 2px solid var(--primary-color);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.card p {
+  margin-bottom: 12px;
+  color: var(--text-color);
+}
+
+.card ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.card ul li {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* ===========================
+   PROJECTS & LINKS
+=========================== */
+.card a {
+  display: inline-block;
+  margin:
