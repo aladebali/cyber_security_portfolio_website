@@ -1,77 +1,223 @@
-<!doctype html>
-<html lang="ar">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>مدونتي — Writeups & Projects</title>
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Marked.js لتحويل Markdown إلى HTML أثناء العرض -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
-  <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity Portfolio</title>
+
+  <!-- Embedded CSS -->
+  <style>
+    :root {
+      --bg: #0e0f13;
+      --card: #151823;
+      --card-soft: rgba(255,255,255,0.04);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22d3ee;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #151823, var(--bg));
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      padding: 24px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-soft));
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .hero img {
+      width: 100%;
+      border-radius: var(--radius);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 32px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .tags span {
+      display: inline-block;
+      background: rgba(34,211,238,0.12);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin: 4px 4px 0 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .option {
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .option:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 30px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .social a {
+      margin: 0 10px;
+      font-size: 20px;
+      color: var(--muted);
+    }
+
+    .social a:hover { color: var(--accent); }
+
+    /* simple page switching */
+    .page { display: none; }
+    .page.active { display: block; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <header class="hero">
-      <div class="hero-left">
-        <img src="avatar.png" alt="صورتي" class="avatar" onerror="this.style.display='none'"/>
-        <h1 id="name">اسمك هنا</h1>
-        <p id="tagline">مقدِّمة قصيرة عنك — محلل أمني، مهتم بالاختراق الأخلاقي وكتابة التقارير.</p>
-        <div class="socials" id="socials">
-          <!-- أيقونات التواصل تظهر هنا ديناميكياً -->
+
+<header>
+  <strong>Aladeb | Cybersecurity</strong>
+  <nav>
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('writeups')">Write-ups</a>
+    <a href="#" onclick="showPage('labs')">Labs</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- HOME -->
+  <section id="home" class="page active">
+    <div class="hero">
+      <div class="card">
+        <h1>Penetration Tester</h1>
+        <p>
+          Cybersecurity enthusiast focused on penetration testing, red teaming,
+          and practical labs. I document my learning journey through real-world
+          simulations and write-ups.
+        </p>
+        <div class="tags">
+          <span>Penetration Testing</span>
+          <span>TryHackMe</span>
+          <span>Hack The Box</span>
+          <span>Linux</span>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="live-card">
-          <h3>الحالة الحية</h3>
-          <p id="live-status">توجد <strong id="total-rooms">0</strong> تقارير لغرف TryHackMe.</p>
-          <div class="controls">
-            <input id="search" placeholder="ابحث عن غرفة أو كلمة..." />
-            <select id="filter-platform">
-              <option value="">كل المنصات</option>
-              <option value="tryhackme">TryHackMe</option>
-              <option value="other">أخرى</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </header>
 
-    <main>
-      <section class="sections">
-        <div class="section-card">
-          <h2>Writeups — غرف TryHackMe</h2>
-          <p class="muted">هنا تجد تقاريرك المجمعة حسب الملف. اضف تقارير جديدة في مجلد <code>/rooms/</code>.</p>
-          <div id="rooms-stats" class="stats">
-            <!-- إحصائيات سريعة تظهر هنا -->
-          </div>
-          <div id="rooms-list" class="cards">
-            <!-- بطاقات الغرف تظهر هنا -->
-          </div>
-        </div>
-
-        <div class="section-card">
-          <h2>نبذة عنّي</h2>
-          <p id="about">
-            اكتب هنا التعريف التفصيلي عنك: خبرتك، أدواتك المفضلة، هدفك المهني، أمثلة على مشاريع سابقة.
-          </p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>© <span id="year"></span> — مدونتي الشخصية</p>
-    </footer>
-  </div>
-
-  <!-- نافذة عرض سريعة للتقرير (Modal) -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <button id="modal-close" class="btn-close">×</button>
-      <div id="modal-body">جارٍ التحميل…</div>
-      <div class="modal-actions">
-        <a id="open-full" class="btn" target="_blank" rel="noopener">افتح التقرير بالكامل</a>
+      <div class="card">
+        <img src="profile.jpg" alt="Profile Image" />
       </div>
     </div>
+  </section>
+
+  <!-- WRITEUPS -->
+  <section id="writeups" class="page">
+    <h2>Write-ups</h2>
+    <div class="grid">
+      <div class="card option">
+        <h3>TryHackMe</h3>
+        <p>Detailed room write-ups and methodologies.</p>
+        <a href="#">View Write-ups →</a>
+      </div>
+      <div class="card option">
+        <h3>Hack The Box</h3>
+        <p>Machines, challenges, and exploitation flow.</p>
+        <a href="#">View Write-ups →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LABS -->
+  <section id="labs" class="page">
+    <h2>Labs & Rooms</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Active Machines</h3>
+        <p>Currently working on advanced boxes.</p>
+      </div>
+      <div class="card">
+        <h3>Completed Rooms</h3>
+        <p>Collection of solved labs and techniques.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="social">
+    <a href="#">🐙</a>
+    <a href="#">💼</a>
+    <a href="#">🐦</a>
   </div>
+  <p>© 2026 Aladeb Ahmad</p>
+</footer>
+
+<!-- Embedded JavaScript -->
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+
 </body>
 </html>
