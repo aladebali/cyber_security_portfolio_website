@@ -20,12 +20,8 @@ body{
 }
 a{color:inherit;text-decoration:none}
 
-/* ===== CANVAS BACKGROUND ===== */
-#bg{
-  position:fixed;
-  inset:0;
-  z-index:0;
-}
+/* ===== CANVAS ===== */
+#bg{position:fixed;inset:0;z-index:0}
 
 /* ===== SIDEBAR ===== */
 .sidebar{
@@ -38,138 +34,92 @@ a{color:inherit;text-decoration:none}
   z-index:2;
 }
 .profile{text-align:center}
-.profile img{
-  width:110px;height:110px;border-radius:50%;
-  object-fit:cover;margin-bottom:14px;
-}
-.profile h2{font-size:1.1rem}
+.profile img{width:110px;height:110px;border-radius:50%;margin-bottom:14px}
 .profile p{font-size:.85rem;color:#9ca3af}
 
-.menu{display:flex;flex-direction:column;gap:6px}
 .menu button{
   background:none;border:none;
   color:#cbd5f5;
   padding:12px 14px;
   border-radius:10px;
-  display:flex;align-items:center;gap:12px;
-  cursor:pointer;font-size:.95rem;
-  transition:.2s;
+  display:flex;gap:12px;
+  cursor:pointer;
 }
-.menu button:hover,
-.menu button.active{
-  background:#111827;
-  color:#22c55e;
-}
+.menu button.active,
+.menu button:hover{background:#111827;color:#22c55e}
 
-.sidebar-footer{
-  margin-top:auto;
-  display:flex;justify-content:center;gap:14px;
-}
-.sidebar-footer i{
-  font-size:1.1rem;color:#9ca3af;
-  transition:.2s;
-}
+.sidebar-footer{margin-top:auto;display:flex;gap:14px;justify-content:center}
 .sidebar-footer i:hover{color:#22c55e}
 
 /* ===== MAIN ===== */
-.main{
-  padding:40px 48px;
-  overflow-y:auto;
-  z-index:2;
-}
+.main{padding:30px 48px;overflow-y:auto;z-index:2}
 .view{display:none}
 .view.active{display:block}
 
-/* ===== HOME WRITEUPS ===== */
-.cards{
+/* ===== SEARCH ===== */
+.search-box{
+  position:fixed;
+  top:20px;
+  right:30px;
+  background:#020617;
+  border:1px solid #111827;
+  border-radius:12px;
+  padding:8px 14px;
   display:flex;
-  flex-direction:column;
-  gap:26px;
+  align-items:center;
+  gap:10px;
+  z-index:3;
+}
+.search-box input{
+  background:none;border:none;
+  color:#e5e7eb;
+  outline:none;
+  width:160px;
 }
 
+/* ===== CARDS ===== */
+.cards{display:flex;flex-direction:column;gap:26px}
 .card{
   background:#020617;
   border-radius:18px;
   padding:26px;
-  cursor:pointer;
   transition:.25s;
-  box-shadow:0 0 0 rgba(34,197,94,0);
-  position:relative;
 }
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:18px;
-  background:radial-gradient(circle at top left, rgba(34,197,94,.15), transparent 60%);
-  opacity:.4;
-  pointer-events:none;
-}
-.card:hover{
-  transform:translateY(-6px) scale(1.01);
-  box-shadow:0 0 35px rgba(34,197,94,.35);
-}
-.card h3{margin-bottom:8px}
-.card p{color:#9ca3af}
-.card-meta{margin-top:10px;font-size:.8rem;color:#6b7280}
+.card:hover{box-shadow:0 0 35px rgba(34,197,94,.35)}
+.card-meta{font-size:.8rem;color:#6b7280}
+.card-link{margin-top:8px;color:#22c55e;font-size:.85rem}
 
-/* ===== WRITEUPS PAGE ===== */
-.writeup-section{
-  margin-bottom:46px;
-}
-.writeup-section h2{
-  margin-bottom:18px;
-  color:#22c55e;
-}
-.writeup-list{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-
-/* ===== ABOUT ===== */
-.about{max-width:900px;line-height:1.9}
-.tags span{
-  display:inline-block;
-  background:#052e16;
-  color:#22c55e;
-  padding:6px 14px;
-  border-radius:20px;
-  margin:6px 6px 0 0;
-  font-size:.85rem;
-}
+/* ===== WRITEUPS ===== */
+.writeup-section{margin-bottom:46px}
+.writeup-section h2{color:#22c55e;margin-bottom:18px}
+.writeup-list{display:flex;flex-direction:column;gap:16px}
+.writeup-info{font-size:.8rem;color:#9ca3af}
 
 /* ===== CONTACT ===== */
-.contact-list{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-  max-width:800px;
-}
+.contact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
 .contact-item{
-  display:flex;
-  align-items:center;
-  gap:14px;
   background:#020617;
-  padding:16px 20px;
+  padding:16px;
   border-radius:12px;
+  display:flex;
+  gap:14px;
   transition:.25s;
 }
-.contact-item:hover{
-  transform:translateY(-4px) scale(1.03);
-  box-shadow:0 0 22px rgba(34,197,94,.3);
-}
-.contact-item i{font-size:1.4rem;color:#22c55e}
+.contact-item:hover{box-shadow:0 0 22px rgba(34,197,94,.3)}
 
 @media(max-width:900px){
   body{grid-template-columns:1fr}
-  .sidebar{position:sticky;top:0}
 }
 </style>
 </head>
 
 <body>
 <canvas id="bg"></canvas>
+
+<div class="search-box">
+  <i class="fa fa-search"></i>
+  <input id="search" placeholder="Search..." />
+</div>
 
 <aside class="sidebar">
   <div class="profile">
@@ -179,16 +129,17 @@ a{color:inherit;text-decoration:none}
   </div>
 
   <div class="menu">
-    <button class="active" onclick="showView('home',this)"><i class="fa-house"></i> Home</button>
-    <button onclick="showView('writeups',this)"><i class="fa-pen"></i> Writeups</button>
-    <button onclick="showView('about',this)"><i class="fa-user"></i> About</button>
-    <button onclick="showView('contact',this)"><i class="fa-link"></i> Contact</button>
+    <button class="active" onclick="showView('home',this)">Home</button>
+    <button onclick="showView('writeups',this)">Writeups</button>
+    <button onclick="showView('about',this)">About</button>
+    <button onclick="showView('contact',this)">Contact</button>
   </div>
 
   <div class="sidebar-footer">
-    <i class="fa-brands fa-github"></i>
-    <i class="fa-brands fa-linkedin"></i>
-    <i class="fa-brands fa-telegram"></i>
+    <i class="fab fa-github"></i>
+    <i class="fab fa-linkedin"></i>
+    <i class="fab fa-x-twitter"></i>
+    <i class="fab fa-tiktok"></i>
   </div>
 </aside>
 
@@ -196,15 +147,11 @@ a{color:inherit;text-decoration:none}
 
 <section id="home" class="view active">
   <div class="cards">
-    <div class="card" onclick="location.href='#'">
+    <div class="card">
       <h3>HackTheBox – Artificial</h3>
-      <p>Full machine writeup covering enumeration, exploitation and privilege escalation.</p>
+      <p>Full exploitation chain.</p>
       <div class="card-meta">HTB · Linux</div>
-    </div>
-    <div class="card" onclick="location.href='#'">
-      <h3>TryHackMe – Active Directory</h3>
-      <p>Kerberos attacks, lateral movement, and domain escalation.</p>
-      <div class="card-meta">THM · AD</div>
+      <div class="card-link">→ View on Hack The Box</div>
     </div>
   </div>
 </section>
@@ -213,52 +160,21 @@ a{color:inherit;text-decoration:none}
   <div class="writeup-section">
     <h2>TryHackMe Writeups</h2>
     <div class="writeup-list">
-      <div class="card">THM – Network Services</div>
-      <div class="card">THM – Buffer Overflow</div>
-    </div>
-  </div>
-
-  <div class="writeup-section">
-    <h2>Hack The Box Writeups</h2>
-    <div class="writeup-list">
-      <div class="card">HTB – Linux PrivEsc</div>
-      <div class="card">HTB – Windows AD</div>
-    </div>
-  </div>
-
-  <div class="writeup-section">
-    <h2>General Writeups</h2>
-    <div class="writeup-list">
-      <div class="card">Web Exploitation Notes</div>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="view">
-  <div class="about">
-    <h2>About Me</h2>
-    <p>
-      Red Team operator and penetration testing enthusiast focused on real-world offensive security.
-      Ranked Top 1% on TryHackMe with over 300 completed labs.
-      Strong experience in web exploitation, Linux systems, Active Directory attacks,
-      privilege escalation, and post-exploitation techniques.
-      I document every learning path through clean and structured writeups.
-    </p>
-    <div class="tags">
-      <span>Red Team</span><span>Pentesting</span><span>TryHackMe</span>
-      <span>Hack The Box</span><span>Active Directory</span><span>Linux</span>
+      <div class="card">
+        THM – Active Directory
+        <div class="writeup-info">Type: AD · Difficulty: Medium</div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="contact" class="view">
-  <h2>Contact & Platforms</h2>
   <div class="contact-list">
-    <a class="contact-item" href="#"><i class="fab fa-github"></i> GitHub</a>
-    <a class="contact-item" href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    <a class="contact-item" href="#"><i class="fab fa-telegram"></i> Telegram</a>
-    <a class="contact-item" href="#"><i class="fa-terminal"></i> TryHackMe</a>
-    <a class="contact-item" href="#"><i class="fa-cube"></i> Hack The Box</a>
+    <div class="contact-item"><i class="fab fa-github"></i> GitHub</div>
+    <div class="contact-item"><i class="fab fa-linkedin"></i> LinkedIn</div>
+    <div class="contact-item"><i class="fab fa-telegram"></i> Telegram</div>
+    <div class="contact-item"><i class="fab fa-x-twitter"></i> X</div>
+    <div class="contact-item"><i class="fab fa-tiktok"></i> TikTok</div>
   </div>
 </section>
 
@@ -268,37 +184,49 @@ a{color:inherit;text-decoration:none}
 function showView(id,btn){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
 }
 
-/* ===== PARTICLE BACKGROUND ===== */
+/* SEARCH */
+document.getElementById("search").addEventListener("input",e=>{
+  let v=e.target.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(c=>{
+    c.style.display=c.innerText.toLowerCase().includes(v)?"block":"none";
+  });
+});
+
+/* CANVAS */
 const c=document.getElementById("bg"),x=c.getContext("2d");
 let w,h,pts=[];
 function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
-window.onresize=resize;resize();
+resize();onresize=resize;
 
-for(let i=0;i<80;i++)
-  pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4})
+for(let i=0;i<120;i++)
+pts.push({x:Math.random()*w,y:Math.random()*h,vx:0,vy:0});
 
 let mx=0,my=0;
-addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY})
+onmousemove=e=>{mx=e.clientX;my=e.clientY};
 
 function draw(){
   x.clearRect(0,0,w,h);
   for(let p of pts){
+    let d=Math.hypot(mx-p.x,my-p.y);
+    if(d<150){
+      p.vx+=(p.x-mx)/d*0.03;
+      p.vy+=(p.y-my)/d*0.03;
+    }
     p.x+=p.vx;p.y+=p.vy;
+    p.vx*=0.95;p.vy*=0.95;
     if(p.x<0||p.x>w)p.vx*=-1;
     if(p.y<0||p.y>h)p.vy*=-1;
     for(let q of pts){
-      let d=Math.hypot(p.x-q.x,p.y-q.y);
-      if(d<120){
-        x.strokeStyle="rgba(34,197,94,"+(1-d/120)*.15+")";
+      let dist=Math.hypot(p.x-q.x,p.y-q.y);
+      if(dist<130){
+        x.strokeStyle="rgba(34,197,94,"+(1-dist/130)*.2+")";
         x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke();
       }
     }
   }
-  requestAnimationFrame(draw)
+  requestAnimationFrame(draw);
 }
 draw();
 </script>
