@@ -43,6 +43,7 @@ a{text-decoration:none;color:inherit}
   border-radius:50%;
   object-fit:cover;
   margin-bottom:14px;
+  border:2px solid #22c55e;
 }
 .profile h2{font-size:1.1rem}
 .profile p{font-size:.85rem;color:#9ca3af}
@@ -70,14 +71,14 @@ a{text-decoration:none;color:inherit}
   margin-top:auto;
   display:flex;
   justify-content:center;
-  gap:16px;
+  gap:18px;
 }
-.sidebar-footer i{
-  font-size:1.2rem;
+.sidebar-footer a{
   color:#9ca3af;
+  font-size:1.25rem;
   transition:.2s;
 }
-.sidebar-footer i:hover{color:#22c55e}
+.sidebar-footer a:hover{color:#22c55e}
 
 /* ===== MAIN ===== */
 .main{
@@ -89,7 +90,7 @@ a{text-decoration:none;color:inherit}
 .view{display:none}
 .view.active{display:block}
 
-/* ===== SEARCH BAR (HOME + WRITEUPS) ===== */
+/* ===== SEARCH BAR ===== */
 .search-bar{
   position:sticky;
   top:0;
@@ -111,42 +112,47 @@ a{text-decoration:none;color:inherit}
 }
 .search-box i{color:#22c55e}
 .search-box input{
-  background:none;
-  border:none;
-  outline:none;
-  color:#e5e7eb;
-  width:100%;
+  background:none;border:none;outline:none;
+  color:#e5e7eb;width:100%;
 }
 
-/* ===== HOME HERO ===== */
+/* ===== HOME ===== */
 .hero{
-  margin-top:10px;
-  margin-bottom:28px;
+  margin-bottom:26px;
 }
 .hero h1{
-  font-size:2.6rem;
+  font-size:2.7rem;
   margin-bottom:12px;
 }
 .hero p{
-  max-width:720px;
+  max-width:760px;
   color:#9ca3af;
-  line-height:1.85;
+  line-height:1.9;
+}
+
+/* ===== GREEN DIVIDER ===== */
+.divider{
+  width:60%;
+  height:1px;
+  margin:28px auto 38px;
+  background:linear-gradient(90deg,
+    transparent,
+    rgba(34,197,94,.9),
+    transparent);
+  box-shadow:0 0 22px rgba(34,197,94,.6);
 }
 
 /* ===== CARDS ===== */
 .cards{
-  margin-top:20px;
   display:flex;
   flex-direction:column;
   gap:26px;
 }
 .card{
-  width:100%;
   background:#020617;
   border-radius:20px;
-  padding:28px;
+  padding:30px;
   position:relative;
-  cursor:pointer;
   transition:.3s;
 }
 .card::before{
@@ -155,7 +161,7 @@ a{text-decoration:none;color:inherit}
   inset:0;
   border-radius:20px;
   background:radial-gradient(circle at top left,
-    rgba(34,197,94,.2),
+    rgba(34,197,94,.25),
     transparent 65%);
   opacity:.55;
 }
@@ -164,17 +170,15 @@ a{text-decoration:none;color:inherit}
   box-shadow:0 0 45px rgba(34,197,94,.4);
 }
 .card h3{margin-bottom:10px}
-.card p{color:#9ca3af}
+.card p{color:#9ca3af;line-height:1.7}
 .card-meta{
-  margin-top:12px;
+  margin-top:14px;
   font-size:.8rem;
   color:#6b7280;
 }
 
 /* ===== WRITEUPS ===== */
-.writeup-section{
-  margin-bottom:50px;
-}
+.writeup-section{margin-bottom:54px}
 .writeup-section h2{
   margin-bottom:18px;
   color:#22c55e;
@@ -188,8 +192,14 @@ a{text-decoration:none;color:inherit}
 /* ===== ABOUT ===== */
 .about{
   max-width:900px;
-  line-height:1.9;
+  line-height:1.95;
 }
+.about ul{
+  margin-top:16px;
+  padding-left:18px;
+  color:#9ca3af;
+}
+.about li{margin-bottom:8px}
 .tags span{
   display:inline-block;
   background:#052e16;
@@ -239,68 +249,69 @@ a{text-decoration:none;color:inherit}
   <div class="profile">
     <img src="profile.jpg">
     <h2>Aladeb Ahmad</h2>
-    <p>Red Team / Pentester</p>
+    <p>Red Team Operator</p>
   </div>
 
   <div class="menu">
     <button class="active" onclick="showView('home',this)">
-      <i class="fa-house"></i> Home
+      <i class="fa-solid fa-house-signal"></i> Home
     </button>
     <button onclick="showView('writeups',this)">
-      <i class="fa-pen"></i> Writeups
+      <i class="fa-solid fa-book-skull"></i> Writeups
     </button>
     <button onclick="showView('about',this)">
-      <i class="fa-user"></i> About
+      <i class="fa-solid fa-id-badge"></i> About
     </button>
     <button onclick="showView('contact',this)">
-      <i class="fa-link"></i> Contact
+      <i class="fa-solid fa-address-card"></i> Contact
     </button>
   </div>
 
   <div class="sidebar-footer">
-    <i class="fab fa-github"></i>
-    <i class="fab fa-linkedin"></i>
-    <i class="fab fa-telegram"></i>
+    <a href="https://github.com/USERNAME" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/USERNAME" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://t.me/USERNAME" target="_blank"><i class="fab fa-telegram"></i></a>
   </div>
 </aside>
 
 <main class="main">
 
 <section id="home" class="view active">
-
   <div class="search-bar">
     <div class="search-box">
       <i class="fas fa-search"></i>
-      <input type="text" placeholder="Search">
+      <input type="text" placeholder="Search labs, writeups...">
     </div>
   </div>
 
   <div class="hero">
     <h1>Red Team Portfolio</h1>
     <p>
-      Offensive security practitioner focused on real-world attacks,
-      Active Directory exploitation, web vulnerabilities, and post-exploitation.
-      Every lab is documented with clean technical writeups.
+      Offensive security practitioner specialized in real-world attack simulation,
+      Active Directory exploitation, web application security, and post-exploitation
+      techniques. All labs are documented with professional technical writeups.
     </p>
   </div>
 
-  <div class="cards">
-    <div class="card">
-      <h3>HackTheBox – Artificial</h3>
-      <p>Enumeration, exploitation and privilege escalation walkthrough.</p>
-      <div class="card-meta">HTB · Linux</div>
-    </div>
+  <div class="divider"></div>
 
-    <div class="card">
+  <div class="cards">
+    <a href="#" class="card">
+      <h3>Hack The Box – Artificial</h3>
+      <p>Complete compromise of a Linux host including enumeration, credential reuse,
+      privilege escalation and operational notes.</p>
+      <div class="card-meta">HTB · Linux · PrivEsc</div>
+    </a>
+
+    <a href="#" class="card">
       <h3>TryHackMe – Active Directory</h3>
-      <p>Kerberos abuse, lateral movement, and domain escalation.</p>
-      <div class="card-meta">THM · AD</div>
-    </div>
+      <p>Kerberos abuse, SMB relay, lateral movement, and domain administrator takeover.</p>
+      <div class="card-meta">THM · AD · Red Team</div>
+    </a>
   </div>
 </section>
 
 <section id="writeups" class="view">
-
   <div class="search-bar">
     <div class="search-box">
       <i class="fas fa-search"></i>
@@ -311,24 +322,24 @@ a{text-decoration:none;color:inherit}
   <div class="writeup-section">
     <h2>TryHackMe</h2>
     <div class="writeup-list">
-      <div class="card">Network Services</div>
-      <div class="card">Windows PrivEsc</div>
+      <a href="#" class="card">Network Services Deep Dive</a>
+      <a href="#" class="card">Windows Privilege Escalation</a>
     </div>
   </div>
 
   <div class="writeup-section">
     <h2>Hack The Box</h2>
     <div class="writeup-list">
-      <div class="card">Linux Privilege Escalation</div>
-      <div class="card">Active Directory Attacks</div>
+      <a href="#" class="card">Linux Enumeration Methodology</a>
+      <a href="#" class="card">Active Directory Attacks</a>
     </div>
   </div>
 
   <div class="writeup-section">
     <h2>Notes & Research</h2>
     <div class="writeup-list">
-      <div class="card">Web Exploitation Notes</div>
-      <div class="card">Red Team Methodology</div>
+      <a href="#" class="card">Web Exploitation Notes</a>
+      <a href="#" class="card">Red Team OPSEC</a>
     </div>
   </div>
 </section>
@@ -337,9 +348,14 @@ a{text-decoration:none;color:inherit}
   <div class="about">
     <h2>About Me</h2>
     <p>
-      Red Team operator and penetration testing enthusiast focused on real-world offensive security.
-      Ranked Top 1% on TryHackMe with strong experience in AD, web exploitation, and Linux systems.
+      Red Team operator with hands-on experience in offensive security labs and
+      enterprise-style attack paths. Focused on realistic adversary simulation.
     </p>
+    <ul>
+      <li>Active Directory attacks & lateral movement</li>
+      <li>Linux & Windows privilege escalation</li>
+      <li>Web application exploitation</li>
+    </ul>
     <div class="tags">
       <span>Red Team</span><span>Pentesting</span><span>AD</span>
       <span>Linux</span><span>Web</span>
@@ -350,12 +366,12 @@ a{text-decoration:none;color:inherit}
 <section id="contact" class="view">
   <h2>Contact</h2>
   <div class="contact-list">
-    <a class="contact-item"><i class="fab fa-github"></i> GitHub</a>
-    <a class="contact-item"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    <a class="contact-item"><i class="fab fa-telegram"></i> Telegram</a>
-    <a class="contact-item"><i class="fab fa-x-twitter"></i> X</a>
-    <a class="contact-item"><i class="fa-cube"></i> Hack The Box</a>
-    <a class="contact-item"><i class="fa-terminal"></i> TryHackMe</a>
+    <a href="#" class="contact-item"><i class="fab fa-github"></i> GitHub</a>
+    <a href="#" class="contact-item"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="#" class="contact-item"><i class="fab fa-telegram"></i> Telegram</a>
+    <a href="#" class="contact-item"><i class="fab fa-x-twitter"></i> X</a>
+    <a href="#" class="contact-item"><i class="fa-solid fa-cube"></i> Hack The Box</a>
+    <a href="#" class="contact-item"><i class="fa-solid fa-terminal"></i> TryHackMe</a>
   </div>
 </section>
 
@@ -369,11 +385,10 @@ function showView(id,btn){
   btn.classList.add('active');
 }
 
-/* ===== INTERACTIVE BACKGROUND (SLOW + DENSE) ===== */
+/* ===== INTERACTIVE BACKGROUND ===== */
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
-let w,h,pts=[];
-let mouse={x:0,y:0};
+let w,h,pts=[],mouse={x:0,y:0};
 
 function resize(){
   w=canvas.width=innerWidth;
@@ -381,7 +396,7 @@ function resize(){
 }
 resize();onresize=resize;
 
-for(let i=0;i<140;i++){
+for(let i=0;i<150;i++){
   pts.push({
     x:Math.random()*w,
     y:Math.random()*h,
@@ -398,16 +413,13 @@ addEventListener("mousemove",e=>{
 function draw(){
   ctx.clearRect(0,0,w,h);
   for(let p of pts){
-    let dx=p.x-mouse.x;
-    let dy=p.y-mouse.y;
-    let dist=Math.sqrt(dx*dx+dy*dy);
+    let dx=p.x-mouse.x,dy=p.y-mouse.y;
+    let dist=Math.hypot(dx,dy);
     if(dist<150){
       p.vx+=dx/dist*0.01;
       p.vy+=dy/dist*0.01;
     }
-    p.x+=p.vx;
-    p.y+=p.vy;
-
+    p.x+=p.vx;p.y+=p.vy;
     if(p.x<0||p.x>w)p.vx*=-1;
     if(p.y<0||p.y>h)p.vy*=-1;
 
